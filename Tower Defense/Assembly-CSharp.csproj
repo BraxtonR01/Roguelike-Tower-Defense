@@ -55,9 +55,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GenerateGrid.cs" />
     <Compile Include="Assets\Scripts\AStar.cs" />
-    <Compile Include="Assets\Scripts\NodeScript.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\NodeScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyMove.cs" />
+    <Compile Include="Assets\Scripts\Waypoint.cs" />
+    <Compile Include="Assets\Scripts\Wave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

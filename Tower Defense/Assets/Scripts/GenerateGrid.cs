@@ -76,7 +76,7 @@ public class GenerateGrid : MonoBehaviour
                 //Setting proper positioning
                 Vector3 newTrans = new Vector3(holder.transform.position.x + x * spacing, holder.transform.position.y + y * spacing, 0);
                 Vector3 seTrans = new Vector3(holder.transform.position.x + x * spacing, holder.transform.position.y + y * spacing, -.5f);
-
+                int pathPosition = -1;
                 bool found = false;
 
                 foreach (int[] pos in path)
@@ -84,12 +84,15 @@ public class GenerateGrid : MonoBehaviour
                     if (x == pos[0] && y == pos[1])
                     {
                         found = true;
+                        pathPosition = path.IndexOf(pos);
                     }
                 }
                 //Instantiate node or path depending on if used in path list or not
                 if (found)
                 {
                     node = Instantiate(pathObject, newTrans, rotation);
+                   
+                    node.GetComponentInChildren<Waypoint>().position = pathPosition;
                 }
                 else
                 {

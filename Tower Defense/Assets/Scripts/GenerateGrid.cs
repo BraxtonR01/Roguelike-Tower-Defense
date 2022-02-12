@@ -24,7 +24,6 @@ public class GenerateGrid : MonoBehaviour
 
     //Max and min path lengths
     public int min;
-    public int max;
 
     //List of all unavailable positions
     private List<int[]> usedPos = new List<int[]>();
@@ -54,11 +53,16 @@ public class GenerateGrid : MonoBehaviour
         currentPath.Add(start);
 
         AStar a = new AStar();
-        findPath(start, finish, min, max, 0);
-        currentPath.AddRange(a.finishPath(width, height, currentPath[currentPath.Count-1], finish, usedPos));
-
-        createMap(currentPath, space);
-        
+        findPath(start, finish, min, 0);
+        List<int[]> finishedPath = a.finishPath(width, height, currentPath[currentPath.Count - 1], finish, usedPos);
+        if(finishedPath == null)
+        {
+            CreateNewScript();
+        }
+        else{
+            currentPath.AddRange(finishedPath);
+            createMap(currentPath, space);
+        }
     }
 
     //Creates visual map on screen including path and node positions
@@ -110,9 +114,23 @@ public class GenerateGrid : MonoBehaviour
             }
         }
     }
+    public void CreateNewScript()
+    {
+        Debug.Log("New");
+        GenerateGrid newG = gameObject.AddComponent<GenerateGrid>();
+        newG.height = height;
+        newG.width = width;
+        newG.space = space;
+        newG.min = min;
+        newG.nodeObject = nodeObject;
+        newG.startObj = startObj;
+        newG.endObj = endObj;
+        newG.pathObject = pathObject;
+        Destroy(this);
+    }
 
     //"Randomly" generated path to a random point from the start point on the grid that is the min length
-    public List<int[]> findPath(int[] currPos, int[] finish, int minLength, int maxLength, int pathLength)
+    public List<int[]> findPath(int[] currPos, int[] finish, int minLength, int pathLength)
     {
         if (pathLength < minLength)
         {
@@ -153,6 +171,12 @@ public class GenerateGrid : MonoBehaviour
             //Finding num of potential positions
             int len = potential.Count;
 
+            if (len == 0)
+            {
+                CreateNewScript();
+                return new List<int[]>();
+            }
+
             //RNG
             int rand = Random.Range(0, len);
 
@@ -170,7 +194,7 @@ public class GenerateGrid : MonoBehaviour
             potential.Clear();
 
             //Recursively return new current position
-            return findPath(currentPath[currentPath.Count - 1], finish, minLength, maxLength, pathLength);
+            return findPath(currentPath[currentPath.Count - 1], finish, minLength, pathLength);
         }
         return currentPath;
     }

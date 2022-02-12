@@ -43,11 +43,15 @@ public class EnemyMove : MonoBehaviour
 
     private GameObject findNextWaypoint(int num)
     {
+        bool destroyed = true;
         foreach(GameObject way in waypoints)
         {
             Waypoint comp = way.GetComponent<Waypoint>();
-            if (num == waypoints.Length)
+            if (num == waypoints.Length && destroyed)
             {
+                destroyed = false;
+                GameController gc = GameObject.FindGameObjectWithTag("Finish").GetComponent<GameController>();
+                gc.LivesLost(gameObject.GetComponent<Enemy>().damage);
                 Destroy(gameObject);
             }
             if(comp.position == num)

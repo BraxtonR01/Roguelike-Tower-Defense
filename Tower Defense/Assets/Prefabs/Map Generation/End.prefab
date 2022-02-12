@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7894953209168719619}
   m_Layer: 0
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,3 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c1b466fce37c542abd48773d661f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 15
+  livesText: {fileID: 0}
+  money: 100
+  moneyText: {fileID: 0}

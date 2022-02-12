@@ -143,3 +143,5 @@ MonoBehaviour:
   - {fileID: 7441818368423206124, guid: b664c8ffe06d09548898580a1028b309, type: 3}
   - {fileID: 2838077258826685959, guid: 7971faa620911dc498b5f6db1071af70, type: 3}
   - {fileID: 3771968332226818884, guid: d5c655c0b86623e4ca7dc9f2f455c491, type: 3}
+  level: 1
+  stage: 1

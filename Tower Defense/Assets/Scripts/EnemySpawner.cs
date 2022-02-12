@@ -11,19 +11,35 @@ public class EnemySpawner : MonoBehaviour
     //Potential waves for given round and stage
     public List<Wave> potentialWaves = new List<Wave>();
 
+    //15 stages in 1 level
+    public int level;
+    public int stage;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnList = new Wave(allEnemies).SetUpEnemyList();
-        findWave(1, 1);
+        level = 1;
+        stage = 1;
+
+        GameObject.Find("Next Wave").GetComponent<NextWaveButton>().es = this;
     }
 
-    public void findWave(int level, int stage)
+    public bool spawnFinished()
+    {
+        if (GameObject.FindGameObjectsWithTag("enemy").Length != 0)
+        {
+            return false;
+        }
+        else { return true; }
+    }
+
+    public void findWave(int lev, int sta)
     {
         //Loop through spawnList
         foreach (Wave w in spawnList)
         {
-            if(w.level == level && w.stage == stage)
+            if(w.level == lev && w.stage == sta)
             {
                 potentialWaves.Add(w);
             }
@@ -33,6 +49,9 @@ public class EnemySpawner : MonoBehaviour
 
         //Looping through chosen wave
         StartCoroutine(SpawnWave(potentialWaves[rand]));
+        potentialWaves.Clear();
+        GameObject.FindGameObjectWithTag("Finish").GetComponent<GameController>().StageChange(level, stage);
+        stage += 1;
     }
 
     private IEnumerator SpawnWave(Wave wave)

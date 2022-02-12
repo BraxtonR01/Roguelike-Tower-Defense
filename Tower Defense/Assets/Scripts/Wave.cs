@@ -63,6 +63,8 @@ public class Wave
         spawnList.Add(new Wave(1, 1, new List<GameObject> { baseEnemy, baseEnemy, baseEnemy, baseEnemy, baseEnemy }, .5f));
         spawnList.Add(new Wave(1, 1, new List<GameObject> { baseEnemy, baseEnemy, fastEnemy, fastEnemy}, 1f));
         spawnList.Add(new Wave(1, 1, new List<GameObject> { tankEnemy, baseEnemy, fastEnemy }, 1f));
+        spawnList.Add(new Wave(1, 2, new List<GameObject> { fastEnemy, fastEnemy, fastEnemy, fastEnemy, fastEnemy, fastEnemy }, .5f));
+
 
         //Returning List
         return spawnList;

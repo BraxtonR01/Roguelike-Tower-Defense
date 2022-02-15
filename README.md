@@ -1,38 +1,36 @@
 # Roguelike Tower Defense
 Personal Project in Unity
 
-3-D top down tower defense game using simple graphics
+3-D grid-based tower defense game using simple graphics
 
-Includes:
+## Includes:
+- Random pathfinding to generate random paths for enemies to take each time the game is played
 
--Random pathfinding to generate random paths for enemies to take each time the game is played
+  - Utilizes an implementation of A* to finish the path after a set number of steps
 
---Utilizes an implementation of A* to finish the path after a set number of steps
+    - Start and end positions always the same but path between them changes per game
 
----Start and end positions always the same but path between them changes per game
+- Basic enemy functionality
 
--Basic enemy functionality
+  - Follow randomly generated path
 
---Follow randomly generated path
+  - Deal damage to player if they reach the end
 
---Deal damage to player if they reach the end
+  - Give gold to player upon being killed
 
---Give gold to player upon being killed
+- Randomly selected waves of enemies
 
--Randomly selected waves of enemies
+- Tower building
 
--Tower building
+- Very basic UI
 
--Very basic UI
+## To Be Completed:
+- Managing and upgrading towers
 
-To Be Completed:
+- Tower functionality
 
--Managing and upgrading towers
+- Random upgrades that can be obtained every couple of rounds
 
--Tower functionality
+- Better graphics
 
--Random upgrades that can be obtained every couple of rounds
-
--Better graphics
-
--UI improvements
+- UI improvements

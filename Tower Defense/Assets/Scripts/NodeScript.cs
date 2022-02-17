@@ -17,7 +17,7 @@ public class NodeScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 hasTower = true;
-                Instantiate(baseTower, gameObject.transform);
+                Instantiate(baseTower, gameObject.transform.position, Quaternion.Euler(180,-90,-90));
             }
         }
     }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739826479071907442}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.896, z: -0.53}
+  m_LocalPosition: {x: 0, y: -0.896, z: 0.5}
   m_LocalScale: {x: 0.2, y: 0.3, z: 0.2}
   m_Children: []
   m_Father: {fileID: 2104530366031797455}
@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4054863991088667370}
   - component: {fileID: 4794886118577997951}
   - component: {fileID: 3076563155374453205}
+  - component: {fileID: -6091650261330452164}
   m_Layer: 0
   m_Name: Base Tower
   m_TagString: Untagged
@@ -122,14 +123,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8844671136988872930}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.8e-14, z: 1e-14}
-  m_LocalScale: {x: 0.8, y: 2, z: 0.8}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 7349336358491555294}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!33 &4054863991088667370
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -193,3 +194,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-6091650261330452164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844671136988872930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ad61a01955b1942bb205f1456daf8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

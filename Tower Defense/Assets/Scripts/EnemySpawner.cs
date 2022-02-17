@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         level = 1;
         stage = 1;
 
-        GameObject.Find("Next Wave").GetComponent<NextWaveButton>().es = this;
+        GameObject.Find("Next Wave").GetComponent<NextWaveButton>().setES(this);
     }
 
     public bool spawnFinished()

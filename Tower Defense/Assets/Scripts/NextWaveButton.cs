@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NextWaveButton : MonoBehaviour
 {
-    public EnemySpawner es;
+    private EnemySpawner es;
 
     void Update()
     {
@@ -18,7 +18,10 @@ public class NextWaveButton : MonoBehaviour
             gameObject.GetComponent<Button>().interactable = false;
         }
     }
-
+    public void setES(EnemySpawner e)
+    {
+        es = e;
+    }
     public void onClick()
     {
         es.findWave(es.level, es.stage);

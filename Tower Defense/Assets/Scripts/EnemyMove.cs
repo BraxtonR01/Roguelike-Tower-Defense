@@ -11,7 +11,7 @@ public class EnemyMove : MonoBehaviour
     private GameObject[] waypoints;
 
     //Enemy Speed
-    public float speed;
+    [SerializeField] float speed;
 
     //Current waypoint number
     private int position;
@@ -41,6 +41,12 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    public int getPosition()
+    {
+        return this.position;
+    }
+
+    //Finds the next waypoint for the enemy to traverse to
     private GameObject findNextWaypoint(int num)
     {
         bool destroyed = true;
@@ -60,5 +66,15 @@ public class EnemyMove : MonoBehaviour
             }
         }
         return waypoints[0];
+    }
+
+    //Finds distance to next waypoint
+    public float distanceToWaypoint()
+    {
+        if(target == null)
+        {
+            return 0f;
+        }
+        return Vector3.Distance(gameObject.transform.position, target.position);
     }
 }

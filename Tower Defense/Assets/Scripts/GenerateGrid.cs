@@ -116,7 +116,6 @@ public class GenerateGrid : MonoBehaviour
     }
     public void CreateNewScript()
     {
-        Debug.Log("New");
         GenerateGrid newG = gameObject.AddComponent<GenerateGrid>();
         newG.height = height;
         newG.width = width;

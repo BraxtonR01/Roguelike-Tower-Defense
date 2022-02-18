@@ -7,6 +7,7 @@ public class NodeScript : MonoBehaviour
 
     [SerializeField] GameObject baseTower;
     private bool hasTower;
+    [SerializeField] GameController gc;
     private void OnMouseOver()
     {
         //Check if node already has a tower present

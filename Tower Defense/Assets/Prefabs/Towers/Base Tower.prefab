@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7349336358491555294}
   - component: {fileID: 8539604836802527270}
   - component: {fileID: 2741036174945976970}
-  - component: {fileID: 355260185425104970}
   m_Layer: 0
   m_Name: Gun Barrel
   m_TagString: Untagged
@@ -29,7 +28,8 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.896, z: 0.5}
   m_LocalScale: {x: 0.2, y: 0.3, z: 0.2}
-  m_Children: []
+  m_Children:
+  - {fileID: 4475510638753983160}
   m_Father: {fileID: 2104530366031797455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -82,20 +82,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &355260185425104970
-CapsuleCollider:
+--- !u!1 &5319638036454114560
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739826479071907442}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4475510638753983160}
+  - component: {fileID: 5658988527492817508}
+  m_Layer: 0
+  m_Name: Shooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4475510638753983160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319638036454114560}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.120000005, y: 1.0033334, z: -0.02000019}
+  m_LocalScale: {x: 5, y: 10, z: 3.3333323}
+  m_Children: []
+  m_Father: {fileID: 7349336358491555294}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5658988527492817508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319638036454114560}
   m_Enabled: 1
-  m_Radius: 0.50000036
-  m_Height: 2.0000012
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 1.0164402e-20, z: -0.00000008940701}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402d6ac64f4023745b39ea790f7ca2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1631466724293985107, guid: 7f7e487133f8dd94ebb233036d001828, type: 3}
+  fireRate: 1
 --- !u!1 &8844671136988872930
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,3 +237,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ad61a01955b1942bb205f1456daf8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerRange: 7

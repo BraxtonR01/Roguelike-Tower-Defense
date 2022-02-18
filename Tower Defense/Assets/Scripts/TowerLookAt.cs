@@ -8,45 +8,81 @@ public class TowerLookAt : MonoBehaviour
     private enum targetType { first, last, healthiest, weakest, closest};
     private targetType currentMode;
 
-    private EnemySpawner es;
-
     //All enemies currently in the scence
     private List<GameObject> allEnemies;
+
+    [SerializeField] float towerRange;
+
+    private Transform target;
 
     // Update is called once per frame
     void Start()
     {
         currentMode = targetType.first;
         allEnemies = new List<GameObject>();
-        es = GameObject.Find("Spawn").GetComponent<EnemySpawner>();
+
+        InvokeRepeating("UpdateEnemiesList", 0f, .5f);
     }
+
+    //Draw Tower Range
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, towerRange);
+    }
+
+    //Updates the current enemies list in range of the tower
+    public void UpdateEnemiesList()
+    {
+        GameObject[] enemies;
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            if(Vector3.Distance(transform.position, enemy.transform.position) < towerRange && !allEnemies.Contains(enemy))
+            {
+                allEnemies.Add(enemy);
+            }
+            else if(Vector3.Distance(transform.position, enemy.transform.position) > towerRange && allEnemies.Contains(enemy))
+            {
+                allEnemies.Remove(enemy);
+            }
+        }
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
+    }
+
+    public bool EnemiesInRange()
+    {
+        return (allEnemies.Count>0);
+    }
+
     void Update()
     {
-        if (es.spawnFinished())
-        {
-            return;
-        }
-
-        allEnemies.Clear();
-        allEnemies.AddRange(GameObject.FindGameObjectsWithTag("enemy"));
+        if(allEnemies.Count == 0) { return; }
 
         switch (currentMode)
         {
             case targetType.first:
-                gameObject.transform.LookAt(findFirstEnemy(), Vector3.forward);
+                target = findFirstEnemy();
                 break;
             case targetType.last:
-                gameObject.transform.LookAt(findLastEnemy(), Vector3.forward);
+                target = findLastEnemy();
                 break;
             case targetType.healthiest:
-                gameObject.transform.LookAt(findHealthiestEnemy(), Vector3.forward);
+                target = findHealthiestEnemy();
                 break;
             case targetType.weakest:
-                gameObject.transform.LookAt(findWeakestEnemy(), Vector3.forward);
+                target = findWeakestEnemy();
                 break;
             case targetType.closest:
-                gameObject.transform.LookAt(findClosestEnemy(), Vector3.forward);
+                target = findClosestEnemy();
                 break;
+        }
+        if(target != null)
+        {
+            gameObject.transform.LookAt(target, Vector3.forward);
         }
     }
 

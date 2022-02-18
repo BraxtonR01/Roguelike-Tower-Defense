@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour
         GameObject[] UIList = GameObject.FindGameObjectsWithTag("UI");
         foreach(GameObject elem in UIList)
         {
-            Debug.Log(elem.name);
 
             if (elem.name == "Lives")
             {

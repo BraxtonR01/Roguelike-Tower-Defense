@@ -95,8 +95,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.862598
+  m_Center: {x: -0.008060733, y: 0.22341797, z: 0}
 --- !u!114 &-8544892139364072217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   damage: 1
-  killReward: 0
+  killReward: 10

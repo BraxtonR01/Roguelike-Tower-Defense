@@ -9,9 +9,20 @@ public class Enemy : MonoBehaviour
     public int damage;
     public int killReward;
 
-    // Update is called once per frame
-    void Update()
+    private GameController gc;
+
+    void Start()
     {
-        
+        gc = GameObject.Find("Node Holder").GetComponent<GameController>();        
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        if(health <= 0)
+        {
+            gc.AddMoney(killReward);
+            Destroy(gameObject);
+        }
     }
 }

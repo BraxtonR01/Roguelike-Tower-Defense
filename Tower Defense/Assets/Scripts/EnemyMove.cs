@@ -56,7 +56,7 @@ public class EnemyMove : MonoBehaviour
             if (num == waypoints.Length && destroyed)
             {
                 destroyed = false;
-                GameController gc = GameObject.FindGameObjectWithTag("Finish").GetComponent<GameController>();
+                GameController gc = GameObject.Find("Node Holder").GetComponent<GameController>();
                 gc.LivesLost(gameObject.GetComponent<Enemy>().damage);
                 Destroy(gameObject);
             }

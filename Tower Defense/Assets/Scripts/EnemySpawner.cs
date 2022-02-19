@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public List<Wave> spawnList;
     public List<GameObject> allEnemies;
 
+    private bool spawnDone = true;
+
     //Potential waves for given round and stage
     public List<Wave> potentialWaves = new List<Wave>();
 
@@ -28,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool spawnFinished()
     {
-        if (GameObject.FindGameObjectsWithTag("enemy").Length != 0)
+        if (GameObject.FindGameObjectsWithTag("enemy").Length != 0 || !spawnDone)
         {
             return false;
         }
@@ -37,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void findWave(int lev, int sta)
     {
+        spawnDone = false;
         //Loop through spawnList
         foreach (Wave w in spawnList)
         {
@@ -51,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         //Looping through chosen wave
         StartCoroutine(SpawnWave(potentialWaves[rand]));
         potentialWaves.Clear();
-        GameObject.FindGameObjectWithTag("Finish").GetComponent<GameController>().StageChange(level, stage);
+        GameObject.Find("Node Holder").GetComponent<GameController>().StageChange(level, stage);
         stage += 1;
     }
 
@@ -63,5 +66,6 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(e, transform.position, new Quaternion(0, 0, 0, 0));
             yield return new WaitForSeconds(wait);
         }
+        spawnDone = true;
     }
 }

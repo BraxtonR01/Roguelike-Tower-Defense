@@ -59,6 +59,26 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void AddMoney(int value)
+    {
+        money += value;
+        moneyText.text = "Money: " + money;
+    }
+
+    public bool Purchase(int price)
+    {
+        if (money >= price)
+        {
+            money -= price;
+            moneyText.text = "Money: " + money;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     //Makes health text flash red when lives are being lost
     public IEnumerator flashLivesText()
     {

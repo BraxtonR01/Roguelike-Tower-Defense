@@ -11,7 +11,7 @@ public class TowerLookAt : MonoBehaviour
     //All enemies currently in the scence
     private List<GameObject> allEnemies;
 
-    [SerializeField] float towerRange;
+    private float towerRange;
 
     private Transform target;
 
@@ -20,8 +20,9 @@ public class TowerLookAt : MonoBehaviour
     {
         currentMode = targetType.first;
         allEnemies = new List<GameObject>();
-
-        InvokeRepeating("UpdateEnemiesList", 0f, .5f);
+        Tower tow = gameObject.GetComponentInParent<Tower>();
+        towerRange = tow.range;
+        InvokeRepeating("UpdateEnemiesList", 0f, .1f);
     }
 
     //Draw Tower Range
@@ -35,15 +36,12 @@ public class TowerLookAt : MonoBehaviour
     {
         GameObject[] enemies;
         enemies = GameObject.FindGameObjectsWithTag("enemy");
+        allEnemies.Clear();
         foreach(GameObject enemy in enemies)
         {
-            if(Vector3.Distance(transform.position, enemy.transform.position) < towerRange && !allEnemies.Contains(enemy))
+            if(Vector3.Distance(transform.position, enemy.transform.position) < towerRange)
             {
                 allEnemies.Add(enemy);
-            }
-            else if(Vector3.Distance(transform.position, enemy.transform.position) > towerRange && allEnemies.Contains(enemy))
-            {
-                allEnemies.Remove(enemy);
             }
         }
     }
@@ -93,6 +91,10 @@ public class TowerLookAt : MonoBehaviour
 
         foreach(GameObject enemy in allEnemies)
         {
+            if(first == null || enemy == null)
+            {
+                return transform;
+            }
             if (enemy.GetComponent<EnemyMove>().getPosition() > first.GetComponent<EnemyMove>().getPosition() || (enemy.GetComponent<EnemyMove>().getPosition() == first.GetComponent<EnemyMove>().getPosition() && first.GetComponent<EnemyMove>().distanceToWaypoint() > enemy.GetComponent<EnemyMove>().distanceToWaypoint()))
             {
                 first = enemy;
@@ -109,6 +111,10 @@ public class TowerLookAt : MonoBehaviour
 
         foreach (GameObject enemy in allEnemies)
         {
+            if (last == null)
+            {
+                return transform;
+            }
             if (enemy.GetComponent<EnemyMove>().getPosition() < last.GetComponent<EnemyMove>().getPosition() || (enemy.GetComponent<EnemyMove>().getPosition() == last.GetComponent<EnemyMove>().getPosition() && last.GetComponent<EnemyMove>().distanceToWaypoint() < enemy.GetComponent<EnemyMove>().distanceToWaypoint()))
             {
                 last = enemy;
@@ -124,7 +130,11 @@ public class TowerLookAt : MonoBehaviour
 
         foreach(GameObject enemy in allEnemies)
         {
-            if(enemy.GetComponent<Enemy>().health > healthiest.GetComponent<Enemy>().health)
+            if (healthiest == null)
+            {
+                return transform;
+            }
+            if (enemy.GetComponent<Enemy>().health > healthiest.GetComponent<Enemy>().health)
             {
                 healthiest = enemy;
             }
@@ -139,6 +149,10 @@ public class TowerLookAt : MonoBehaviour
 
         foreach (GameObject enemy in allEnemies)
         {
+            if (weakest == null)
+            {
+                return transform;
+            }
             if (enemy.GetComponent<Enemy>().health < weakest.GetComponent<Enemy>().health)
             {
                 weakest = enemy;
@@ -154,7 +168,11 @@ public class TowerLookAt : MonoBehaviour
 
         foreach(GameObject enemy in allEnemies)
         {
-            if(Vector3.Distance(gameObject.transform.position, enemy.transform.position) < Vector3.Distance(gameObject.transform.position, closest.transform.position))
+            if (closest == null)
+            {
+                return transform;
+            }
+            if (Vector3.Distance(gameObject.transform.position, enemy.transform.position) < Vector3.Distance(gameObject.transform.position, closest.transform.position))
             {
                 closest = enemy;
             }

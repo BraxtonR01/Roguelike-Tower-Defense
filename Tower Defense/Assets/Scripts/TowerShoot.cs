@@ -5,19 +5,24 @@ using UnityEngine;
 public class TowerShoot : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
-    private GameObject tempBullet;
+    private GameObject tBullet;
 
-    [SerializeField] float fireRate;
+    private float fireRate;
     private bool canFire;
-
-    private GameObject target;
+    private float dmg;
+    private float sSpeed;
 
     private TowerLookAt tla;
     
     // Start is called before the first frame update
     void Start()
     {
-        tla = GetComponentInParent<TowerLookAt>();
+        Tower tow = gameObject.GetComponentInParent<Tower>();
+        dmg = tow.damage;
+        fireRate = tow.fireRate;
+        sSpeed = tow.shotSpeed;
+
+        tla = gameObject.GetComponentInParent<TowerLookAt>();
         canFire = true;
     }
 
@@ -26,7 +31,6 @@ public class TowerShoot : MonoBehaviour
     {
         if (tla.EnemiesInRange())
         {
-            target = tla.GetTarget().gameObject;
             if (canFire) { StartCoroutine(Fire()); }
         }
     }
@@ -34,7 +38,9 @@ public class TowerShoot : MonoBehaviour
     IEnumerator Fire()
     {
         canFire = false;
-        tempBullet = Instantiate(bullet, gameObject.transform);
+        tBullet = Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation);
+        tBullet.GetComponent<BulletScript>().SetDamage(dmg);
+        tBullet.GetComponent<BulletScript>().SetShotSpeed(sSpeed);
 
         yield return new WaitForSeconds(1/fireRate);
         canFire = true;

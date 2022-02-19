@@ -106,9 +106,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5319638036454114560}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.120000005, y: 1.0033334, z: -0.02000019}
-  m_LocalScale: {x: 5, y: 10, z: 3.3333323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.120000005, y: 1.12, z: -0.02}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 7349336358491555294}
   m_RootOrder: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1631466724293985107, guid: 7f7e487133f8dd94ebb233036d001828, type: 3}
-  fireRate: 1
 --- !u!1 &8844671136988872930
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +139,7 @@ GameObject:
   - component: {fileID: 4794886118577997951}
   - component: {fileID: 3076563155374453205}
   - component: {fileID: -6091650261330452164}
+  - component: {fileID: 6575952298193759589}
   m_Layer: 0
   m_Name: Base Tower
   m_TagString: Untagged
@@ -237,4 +237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ad61a01955b1942bb205f1456daf8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerRange: 7
+--- !u!114 &6575952298193759589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844671136988872930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8072997396f67194c85bb0fbda669dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  damage: 5
+  shotSpeed: 8
+  range: 7
+  cost: 100

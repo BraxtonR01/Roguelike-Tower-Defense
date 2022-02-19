@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GenerateGrid : MonoBehaviour
 {
@@ -116,16 +116,8 @@ public class GenerateGrid : MonoBehaviour
     }
     public void CreateNewScript()
     {
-        GenerateGrid newG = gameObject.AddComponent<GenerateGrid>();
-        newG.height = height;
-        newG.width = width;
-        newG.space = space;
-        newG.min = min;
-        newG.nodeObject = nodeObject;
-        newG.startObj = startObj;
-        newG.endObj = endObj;
-        newG.pathObject = pathObject;
-        Destroy(this);
+        Debug.Log("reload");
+        SceneManager.LoadScene("BaseScene");
     }
 
     //"Randomly" generated path to a random point from the start point on the grid that is the min length

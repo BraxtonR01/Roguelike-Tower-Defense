@@ -24,10 +24,10 @@ Personal Project in Unity
 
 - Very basic UI
 
+- Tower functionality
+
 ## To Be Completed:
 - Managing and upgrading towers
-
-- Tower functionality
 
 - Random upgrades that can be obtained every couple of rounds
 
